@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_blue"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="60sp"
+        android:paddingVertical="50sp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30sp"
+            android:fontFamily="sans-serif-black"
+            android:textSize="100sp"
+            android:textColor="@color/white"
+            android:shadowRadius="20"
+            android:text="APPLE PIE"/>
+
+        <TextView
+            android:id="@+id/tv_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textSize="18sp"
+            android:textColor="@color/orange"
+            android:text="Apple Pie"/>
+
+        <TextView
+            android:id="@+id/tv_kategori"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:text="Pastry"/>
+
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:text="@string/detail"/>
+
+        <TextView
+            android:id="@+id/tv_harga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/light_blue"
+            android:shadowColor="@color/light_blue_trans"
+            android:shadowDx="0.0"
+            android:shadowDy="0.0"
+            android:shadowRadius="10"
+            android:text="Rp7.000,00"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
+            android:layout_marginBottom="20sp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_hapus"
+                android:layout_width="80sp"
+                android:layout_height="40sp"
+                android:layout_marginRight="30sp"
+                android:background="btn_trans"
+                android:fontFamily="sans-serif-black"
+                android:hint="Hapus"
+                android:textColorHint="@color/white_trans"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck"/>
+
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="80sp"
+                android:layout_height="40sp"
+                android:layout_marginLeft="30sp"
+                android:background="btn_trans"
+                android:backgroundTint="@color/transparent"
+                android:fontFamily="sans-serif-black"
+                android:hint="Edit"
+                android:textColorHint="@color/orange"
+                android:textSize="14sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_kembali"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:background="@drawable/btn_orange"
+            android:fontFamily="sans-serif-black"
+            android:hint="Kembali"
+            android:textColorHint="@color/white"
+            android:textSize="14sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

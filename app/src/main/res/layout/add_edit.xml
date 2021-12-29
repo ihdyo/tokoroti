@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="30sp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo_blue"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="20sp"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14sp"
+            android:textColor="@color/dark_blue"
+            android:letterSpacing="0.2"
+            android:text="tokoroti"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="105sp"
+                android:layout_height="2dp"
+                android:layout_marginRight="30sp"
+                android:background="@color/dark_blue"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:textSize="24sp"
+                android:textColor="@color/dark_blue"
+                android:letterSpacing="0.2"
+                android:text="ADD/EDIT"/>
+
+            <View
+                android:layout_width="105sp"
+                android:layout_height="2dp"
+                android:layout_marginLeft="30sp"
+                android:background="@color/dark_blue"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="30sp"
+        android:paddingVertical="20sp"
+        android:layout_marginHorizontal="30sp"
+        android:layout_marginVertical="50sp"
+        android:hint="Nama Produk"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/light_blue"
+        android:backgroundTint="@color/dark_blue"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/et_kategori"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="30sp"
+        android:paddingVertical="20sp"
+        android:layout_marginHorizontal="30sp"
+        android:layout_marginBottom="50sp"
+        android:hint="Kategori"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/light_blue"
+        android:backgroundTint="@color/dark_blue"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/et_harga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="30sp"
+        android:paddingVertical="20sp"
+        android:layout_marginHorizontal="30sp"
+        android:layout_marginBottom="50sp"
+        android:hint="Harga (Rp)"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/light_blue"
+        android:backgroundTint="@color/dark_blue"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/et_deskripsi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="30sp"
+        android:paddingVertical="20sp"
+        android:layout_marginHorizontal="30sp"
+        android:layout_marginBottom="50sp"
+        android:hint="Deskripsi"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/light_blue"
+        android:backgroundTint="@color/dark_blue"
+        android:textSize="14sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90sp"
+        android:layout_marginBottom="20sp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_kembali"
+            android:layout_width="160sp"
+            android:layout_height="40sp"
+            android:layout_marginRight="10sp"
+            android:background="btn_trans"
+            android:fontFamily="sans-serif-black"
+            android:hint="Simpan"
+            android:textColorHint="@color/orange"
+            android:textSize="14sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="160sp"
+            android:layout_height="40sp"
+            android:layout_marginLeft="10sp"
+            android:background="@drawable/btn_orange"
+            android:fontFamily="sans-serif-black"
+            android:hint="Edit"
+            android:textColorHint="@color/white"
+            android:textSize="14sp"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+</LinearLayout>

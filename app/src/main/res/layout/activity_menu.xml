@@ -93,7 +93,7 @@
             android:id="@+id/rv_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/menu_item_list"
+            tools:listitem="@layout/item_list"
             android:paddingTop="30sp"
             android:clipToPadding="false"/>
 

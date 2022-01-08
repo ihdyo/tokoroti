@@ -1,12 +1,41 @@
 package com.example.tokoroti
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 
 class InsertActivity : AppCompatActivity() {
+
+    lateinit var Nama: EditText
+    lateinit var Kategori: EditText
+    lateinit var Harga: EditText
+    lateinit var Deskripsi: EditText
+    lateinit var Kembali: Button
+    lateinit var Tambahkan: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insert)
+
+        Nama = findViewById(R.id.et_nama)
+        Kategori = findViewById(R.id.et_kategori)
+        Harga = findViewById(R.id.et_harga)
+        Deskripsi = findViewById(R.id.et_deskripsi)
+        Kembali = findViewById(R.id.btn_kembali)
+        Tambahkan = findViewById(R.id.btn_tambahkan)
+
+        Kembali.setOnClickListener {
+            finish()
+        }
+
+        Tambahkan.setOnClickListener {
+//            TODO(Masukin logika INSERT)
+//            TODO(Tampilin TOAST)
+            finish()
+        }
+
     }
 
 

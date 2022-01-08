@@ -32,11 +32,11 @@ data class Barang(
     @SerializedName("harga_barang")
     val harga: Int,
 
-    @Expose
-    @SerializedName("created_at")
-    val created_at: Date,
-
-    @Expose
-    @SerializedName("updated_at")
-    val data: Date
+//    @Expose
+//    @SerializedName("created_at")
+//    val created_at: Date,
+//
+//    @Expose
+//    @SerializedName("updated_at")
+//    val data: Date
 )

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">tokoroti</string>
     <string name="detail">Pai buah yang isian utamanya adalah buah apel yang akan menimbulkan rasa manis seiring proses pemanggangan.</string>
+    <string name="konfirmasi">Apakah anda yakin ingin menghapus Apple Pie dari daftar item?</string>
 </resources>

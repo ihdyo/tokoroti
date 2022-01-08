@@ -3,16 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/drawable-v24/btn_dark_blue.xml" value="0.15876288659793814" />
         <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/drawable-v24/btn_trans.xml" value="0.16041666666666668" />
-        <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/activity_detail.xml" value="0.13148907103825136" />
+        <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/activity_detail.xml" value="0.14" />
         <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/activity_detail2.xml" value="0.13148907103825136" />
         <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/activity_edit.xml" value="0.18" />
+        <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/activity_insert.xml" value="0.14" />
         <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/activity_main.xml" value="0.13148907103825136" />
-        <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/activity_menu.xml" value="0.1" />
+        <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/activity_menu.xml" value="0.15" />
+        <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/activity_update.xml" value="0.16" />
         <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/add_edit.xml" value="0.16" />
+        <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/delete_confirmation.xml" value="0.18" />
         <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/detail.xml" value="0.16" />
         <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/edit.xml" value="0.12986111111111112" />
-        <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/item_list.xml" value="0.2" />
+        <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/item_list.xml" value="0.16" />
         <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/menu.xml" value="0.12" />
         <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti/app/src/main/res/layout/menu_item_list.xml" value="0.2" />
         <entry key="..\:/Users/yodhi/AndroidStudioProjects/tokoroti3/app/src/main/res/drawable-v24/ic_baseline_navigate_next_24.xml" value="0.240625" />

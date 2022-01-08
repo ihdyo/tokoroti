@@ -5,6 +5,17 @@ import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class BarangDataResponse(
+    @field:SerializedName("data")
+    val data: List<Barang>,
+
+    @field:SerializedName("error")
+    val error: Boolean,
+
+    @field:SerializedName("message")
+    val message: String
+)
+
+data class Barang(
     @Expose
     @SerializedName("id")
     val id: Int,
@@ -28,5 +39,4 @@ data class BarangDataResponse(
     @Expose
     @SerializedName("updated_at")
     val data: Date
-
 )

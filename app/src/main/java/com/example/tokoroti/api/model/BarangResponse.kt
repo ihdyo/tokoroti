@@ -18,5 +18,5 @@ data class BarangResponse(
 
     @Expose
     @SerializedName("data")
-    val data: List<BarangDataResponse>
+    val data: List<Barang>
 )

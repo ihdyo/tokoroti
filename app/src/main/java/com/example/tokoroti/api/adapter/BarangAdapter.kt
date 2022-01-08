@@ -3,56 +3,38 @@ package com.example.tokoroti.api.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
+import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tokoroti.R
 import com.example.tokoroti.api.model.Barang
+import com.example.tokoroti.api.model.BarangDataResponse
 
-class BarangAdapter(private val dataSet: List<Barang>) : RecyclerView.Adapter<BarangAdapter.ViewHolder>() {
-    private lateinit var onItemClickCallback: OnItemClickCallback
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
+internal class BarangAdapter(private var BarangList: List<Barang>) : RecyclerView.Adapter<BarangAdapter.MyViewHolder>() {
+    internal inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){
+        var Id: TextView = view.findViewById(R.id.tv_id)
+        var Nama: TextView = view.findViewById(R.id.tv_nama)
+        var Kategori: TextView = view.findViewById(R.id.tv_kategori)
+        var Harga: TextView = view.findViewById(R.id.tv_harga)
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val Id: TextView
-        val Nama: TextView
-        val Kategori: TextView
-        val Harga: TextView
-        val Detail: ImageButton
-
-        init {
-            Id = view.findViewById(R.id.tv_id)
-            Nama = view.findViewById(R.id.tv_nama)
-            Kategori = view.findViewById(R.id.tv_kategori)
-            Harga = view.findViewById(R.id.tv_harga)
-            Detail = view.findViewById(R.id.btn_detail)
-        }
+    @NonNull
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_list,parent,false)
+        return MyViewHolder(itemView)
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.item_list, viewGroup, false)
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val Barang = BarangList[position]
 
-        return ViewHolder(view)
+        holder.Id.text = Barang.id.toString()
+        holder.Nama.text = Barang.nama
+        holder.Kategori.text = Barang.kategori
+        holder.Harga.text = Barang.harga.toString()
     }
 
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.Id.text = dataSet.get(position).id.toString()
-        viewHolder.Nama.text = dataSet.get(position).nama
-        viewHolder.Kategori.text = dataSet.get(position).kategori
-
-        val data = dataSet.get(position)
-        viewHolder.Detail.setOnClickListener{
-            onItemClickCallback.onItemClicked(data)
-        }
+    override fun getItemCount(): Int {
+        return BarangList.size
     }
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: Barang)
-    }
-
-    override fun getItemCount() = dataSet.size
 
 }

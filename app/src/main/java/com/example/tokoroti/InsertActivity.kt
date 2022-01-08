@@ -1,10 +1,17 @@
 package com.example.tokoroti
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import com.example.tokoroti.api.ApiConfig
+import com.example.tokoroti.api.model.BarangDataRequest
+import com.example.tokoroti.api.model.BarangResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class InsertActivity : AppCompatActivity() {
 
@@ -31,36 +38,28 @@ class InsertActivity : AppCompatActivity() {
         }
 
         Tambahkan.setOnClickListener {
-//            TODO(Masukin logika INSERT)
-//            TODO(Tampilin TOAST)
+            var BarangDataRequest = BarangDataRequest(Nama.text.toString())
+
+            val retro = ApiConfig().getRetroClientInstance().postBarang(BarangDataRequest)
+            retro.enqueue(object : Callback<BarangResponse> {
+                override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
+                    if (response.isSuccessful){
+                        val Barang = response.body()!!
+                        if (Barang.code==200){
+                            Nama.setText("")
+                        }
+                        Toast.makeText(this@InsertActivity, Barang.message + " berhasil ditambahkan", Toast.LENGTH_SHORT).show()
+                    } else{
+                        Log.e("Error Code : ", response.code().toString())
+                        Log.e("Error Message : ", response.message().toString())
+                    }
+                }
+                override fun onFailure(call: Call<BarangResponse>, t: Throwable) {
+                    Log.e("Failed", t.message.toString())
+                }
+            })
             finish()
         }
-
     }
-
-
-//    fun CREATE(){
-//        var BarangDataRequest = BarangDataRequest(Nama.text.toString())
-//
-//        val retro = ApiConfig().getRetroClientInstance().create(ApiService::class.java)
-//        retro.postBarang(BarangDataRequest).enqueue(object : Callback<BarangResponse> {
-//            override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
-//                if (response.isSuccessful){
-//                    val Barang = response.body()!!
-//                    if (Barang.code==200){
-//                        Nama.setText("")
-//                    }
-//                    Toast.makeText(view!!.context,"Tambah Barang "+Barang.message.toString(), Toast.LENGTH_SHORT).show()
-//                }else{
-//                    Log.e("Error Code : ", response.code().toString())
-//                    Log.e("Error Message : ", response.message().toString())
-//                }
-//            }
-//            override fun onFailure(call: Call<BarangResponse>, t: Throwable) {
-//                Log.e("Failed", t.message.toString())
-//            }
-//        })
-//    }
-
 
 }

@@ -8,6 +8,13 @@
     tools:context=".UpdateActivity"
     android:background="@color/white">
 
+    <TextView
+        android:id="@+id/tv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -136,6 +143,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_harga" />
 
     <EditText
+        android:inputType="number"
         android:id="@+id/et_harga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

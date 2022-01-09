@@ -73,29 +73,36 @@ class DetailActivity : AppCompatActivity() {
             finish()
         }
 
-        val retro = ApiConfig().getRetroClientInstance().getBarang()
-        retro.enqueue(object : Callback<BarangResponse> {
-            override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
-                if (response.isSuccessful){
+        Id.text = intent.getStringExtra("ID")
+        Title.text = intent.getStringExtra("NAMA")
+        Nama.text = intent.getStringExtra("NAMA")
+        Kategori.text = intent.getStringExtra("KATEGORI")
+        Harga.text = intent.getStringExtra("HARGA")
+//        Deskripsi = intent.getStringExtra("DESKRIPSI")
 
-                    val Barang = BarangList[Position]
-
-                    Id.text = Barang.id.toString()
-                    Title.text = Barang.nama
-                    Nama.text = Barang.nama
-                    Kategori.text = Barang.kategori
-                    Harga.text = Barang.harga.toString()
-//                    Deskripsi.text = Barang.deskripsi
-
-                }else{
-                    Log.e("Error Code : ", response.code().toString())
-                    Log.e("Error Message :", response.message().toString())
-                }
-            }
-            override fun onFailure(call: Call<BarangResponse>, t: Throwable) {
-                Log.e("Failed", t.message.toString())
-            }
-        })
+//        val retro = ApiConfig().getRetroClientInstance().getBarang()
+//        retro.enqueue(object : Callback<BarangResponse> {
+//            override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
+//                if (response.isSuccessful){
+//
+//                    val Barang = BarangList[Position]
+//
+//                    Id.text = Barang.id.toString()
+//                    Title.text = Barang.nama
+//                    Nama.text = Barang.nama
+//                    Kategori.text = Barang.kategori
+//                    Harga.text = Barang.harga.toString()
+////                    Deskripsi.text = Barang.deskripsi
+//
+//                }else{
+//                    Log.e("Error Code : ", response.code().toString())
+//                    Log.e("Error Message :", response.message().toString())
+//                }
+//            }
+//            override fun onFailure(call: Call<BarangResponse>, t: Throwable) {
+//                Log.e("Failed", t.message.toString())
+//            }
+//        })
 
     }
 

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tokoroti.api.ApiConfig
 import com.example.tokoroti.api.adapter.BarangAdapter
+import com.example.tokoroti.api.model.Barang
 import com.example.tokoroti.api.model.BarangResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,7 +25,6 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
-        Adapter = BarangAdapter(arrayListOf())
         Menu = findViewById(R.id.rv_menu)
         Tambah = findViewById(R.id.btn_tambah)
 
@@ -33,13 +33,13 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        Adapter = BarangAdapter(arrayListOf())
         Menu.setHasFixedSize(true)
         Menu.layoutManager = LinearLayoutManager(this@MenuActivity, LinearLayoutManager.VERTICAL ,false)
         Menu.adapter = Adapter
 
         val retro = ApiConfig().getRetroClientInstance().getBarang()
         retro.enqueue(object : Callback<BarangResponse> {
-
             override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
                 if (response.isSuccessful){
                     val Barang = response.body()!!
@@ -47,14 +47,28 @@ class MenuActivity : AppCompatActivity() {
                     Menu.adapter = Adapter
                     Adapter.notifyDataSetChanged()
 
+                    Adapter?.setOnItemClickCallback(object : BarangAdapter.OnItemClickCallback {
+                        override fun onItemClicked(data: Barang) {
+                            startActivity(
+                                Intent(this@MenuActivity, DetailActivity::class.java)
+                                    .putExtra("ID", data.id.toString())
+                                    .putExtra("NAMA", data.nama)
+                                    .putExtra("KATEGORI", data.kategori)
+                                    .putExtra("HARGA", data.harga)
+//                                    .putExtra("DESKRIPSI", data.deskripsi)
+                            )
+                        }
+                    })
                 }else{
                     Log.e("Error Code : ", response.code().toString())
                     Log.e("Error Message :", response.message().toString())
                 }
             }
+
             override fun onFailure(call: Call<BarangResponse>, t: Throwable) {
                 Log.e("Failed", t.message.toString())
             }
+
         })
 
     }

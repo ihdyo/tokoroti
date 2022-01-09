@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.tokoroti.api.ApiConfig
+import com.example.tokoroti.api.adapter.BarangAdapter
+import com.example.tokoroti.api.model.Barang
 import com.example.tokoroti.api.model.BarangResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,7 +27,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var Edit: Button
     lateinit var Kembali: Button
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    fun onCreate(savedInstanceState: Bundle?, BarangList: List<Barang>, Position: Int) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
@@ -34,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
         Nama = findViewById(R.id.tv_nama)
         Kategori = findViewById(R.id.tv_kategori)
         Harga = findViewById(R.id.tv_harga)
-        Deskripsi = findViewById(R.id.tv_deskripsi)
+//        Deskripsi = findViewById(R.id.tv_deskripsi)
         Edit = findViewById(R.id.btn_edit)
         Hapus = findViewById(R.id.btn_hapus)
         Kembali = findViewById(R.id.btn_kembali)
@@ -45,7 +47,9 @@ class DetailActivity : AppCompatActivity() {
         }
 
         Hapus.setOnClickListener {
-            val retro = ApiConfig().getRetroClientInstance().deleteBarang(Id.text.toString().toInt())
+            var id = Id.text.toString().toInt()
+
+            val retro = ApiConfig().getRetroClientInstance().deleteBarang(id)
             retro.enqueue(object : Callback<BarangResponse> {
                 override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
                     if (response.isSuccessful){
@@ -68,6 +72,30 @@ class DetailActivity : AppCompatActivity() {
         Kembali.setOnClickListener {
             finish()
         }
+
+        val retro = ApiConfig().getRetroClientInstance().getBarang()
+        retro.enqueue(object : Callback<BarangResponse> {
+            override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
+                if (response.isSuccessful){
+
+                    val Barang = BarangList[Position]
+
+                    Id.text = Barang.id.toString()
+                    Title.text = Barang.nama
+                    Nama.text = Barang.nama
+                    Kategori.text = Barang.kategori
+                    Harga.text = Barang.harga.toString()
+//                    Deskripsi.text = Barang.deskripsi
+
+                }else{
+                    Log.e("Error Code : ", response.code().toString())
+                    Log.e("Error Message :", response.message().toString())
+                }
+            }
+            override fun onFailure(call: Call<BarangResponse>, t: Throwable) {
+                Log.e("Failed", t.message.toString())
+            }
+        })
 
     }
 

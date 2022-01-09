@@ -38,7 +38,12 @@ class InsertActivity : AppCompatActivity() {
         }
 
         Tambahkan.setOnClickListener {
-            var BarangDataRequest = BarangDataRequest(Nama.text.toString())
+            var nama = Nama.text.toString()
+            var kategori = Kategori.text.toString()
+            var harga = Harga.text.toString().toInt()
+//            var deskripsi = Deskripsi.text.toString()
+
+            var BarangDataRequest = BarangDataRequest(nama, kategori, harga)
 
             val retro = ApiConfig().getRetroClientInstance().postBarang(BarangDataRequest)
             retro.enqueue(object : Callback<BarangResponse> {

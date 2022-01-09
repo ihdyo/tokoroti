@@ -41,20 +41,26 @@ class UpdateActivity : AppCompatActivity() {
         }
 
         Edit.setOnClickListener {
-            var BarangDataRequest = BarangDataRequest(Nama.text.toString())
 
-            val retro = ApiConfig().getRetroClientInstance().putBarang(Id.text.toString().toInt(), BarangDataRequest)
+            var id = Id.text.toString().toInt()
+            var nama = Nama.text.toString()
+            var kategori = Kategori.text.toString()
+            var harga = Harga.text.toString().toInt()
+//            var deskripsi = Deskripsi.text.toString()
+
+            var BarangDataRequest = BarangDataRequest(nama, kategori, harga)
+
+            val retro = ApiConfig().getRetroClientInstance().putBarang(id, BarangDataRequest)
             retro.enqueue(object :
                 Callback<BarangResponse> {
                 override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
                     if (response.isSuccessful){
                         val Barang = response.body()!!
                         if (Barang.code==200){
-                            Id.setText("")
                             Nama.setText("")
                             Kategori.setText("")
                             Harga.setText("")
-                            Deskripsi
+//                            Deskripsi.setText("")
                         }
                         Toast.makeText(this@UpdateActivity, Barang.message + " berhasil diperbarui", Toast.LENGTH_SHORT).show()
                     }else{

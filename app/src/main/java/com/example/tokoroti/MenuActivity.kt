@@ -26,7 +26,6 @@ class MenuActivity : AppCompatActivity() {
 
         Adapter = BarangAdapter(arrayListOf())
         Menu = findViewById(R.id.rv_menu)
-        Menu = findViewById(R.id.rv_menu)
         Tambah = findViewById(R.id.btn_tambah)
 
         Tambah.setOnClickListener {
@@ -40,6 +39,7 @@ class MenuActivity : AppCompatActivity() {
 
         val retro = ApiConfig().getRetroClientInstance().getBarang()
         retro.enqueue(object : Callback<BarangResponse> {
+
             override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
                 if (response.isSuccessful){
                     val Barang = response.body()!!
@@ -60,8 +60,3 @@ class MenuActivity : AppCompatActivity() {
     }
 
 }
-
-
-//val NIM = intent.getStringExtra("EXTRA_NIM")
-//val nim = findViewById<TextView>(R.id.nim)
-//nim.text = NIM

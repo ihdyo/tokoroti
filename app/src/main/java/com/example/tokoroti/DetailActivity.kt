@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -27,7 +28,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var Edit: Button
     lateinit var Kembali: Button
 
-    fun onCreate(savedInstanceState: Bundle?, BarangList: List<Barang>, Position: Int) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
@@ -47,39 +48,51 @@ class DetailActivity : AppCompatActivity() {
         }
 
         Hapus.setOnClickListener {
-            var id = Id.text.toString().toInt()
-
-            val retro = ApiConfig().getRetroClientInstance().deleteBarang(id)
-            retro.enqueue(object : Callback<BarangResponse> {
-                override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
-                    if (response.isSuccessful){
-                        val Barang = response.body()!!
-                        if (Barang.code==200){
-                            Id.setText("")
-                        }
-                        Toast.makeText(this@DetailActivity, Barang.message.toString() + " berhasil dihapus", Toast.LENGTH_SHORT).show();
-                    }else{
-                        Log.e("Error Code : ", response.code().toString())
-                        Log.e("Error Message : ", response.message().toString())
-                    }
-                }
-                override fun onFailure(call: Call<BarangResponse>, t: Throwable) {
-                    Log.e("Failed", t.message.toString())
-                }
-            })
+            DELETE()
+            finish()
         }
 
         Kembali.setOnClickListener {
             finish()
         }
 
+        intentREAD()
+
+    }
+
+    private fun DELETE() {
+        var id = Id.text.toString().toInt()
+
+        val retro = ApiConfig().getRetroClientInstance().deleteBarang(id)
+        retro.enqueue(object : Callback<BarangResponse> {
+            override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
+                if (response.isSuccessful){
+                    val Barang = response.body()!!
+                    if (Barang.code==200){
+                        Id.setText("")
+                    }
+                    Toast.makeText(this@DetailActivity, Barang.message.toString() + " berhasil dihapus", Toast.LENGTH_SHORT).show();
+                }else{
+                    Log.e("Error Code : ", response.code().toString())
+                    Log.e("Error Message : ", response.message().toString())
+                }
+            }
+            override fun onFailure(call: Call<BarangResponse>, t: Throwable) {
+                Log.e("Failed", t.message.toString())
+            }
+        })
+    }
+
+    private fun intentREAD() {
         Id.text = intent.getStringExtra("ID")
         Title.text = intent.getStringExtra("NAMA")
         Nama.text = intent.getStringExtra("NAMA")
         Kategori.text = intent.getStringExtra("KATEGORI")
         Harga.text = intent.getStringExtra("HARGA")
 //        Deskripsi = intent.getStringExtra("DESKRIPSI")
+    }
 
+//    private fun READ(BarangList: List<Barang>, Position: Int) {
 //        val retro = ApiConfig().getRetroClientInstance().getBarang()
 //        retro.enqueue(object : Callback<BarangResponse> {
 //            override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
@@ -103,7 +116,6 @@ class DetailActivity : AppCompatActivity() {
 //                Log.e("Failed", t.message.toString())
 //            }
 //        })
-
-    }
+//    }
 
 }

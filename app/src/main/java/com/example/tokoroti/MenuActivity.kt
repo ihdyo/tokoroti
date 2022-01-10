@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.tokoroti.api.ApiConfig
 import com.example.tokoroti.api.adapter.BarangAdapter
 import com.example.tokoroti.api.model.Barang
@@ -19,6 +21,7 @@ class MenuActivity : AppCompatActivity() {
 
     lateinit var Menu: RecyclerView
     lateinit var Tambah: Button
+    lateinit var Swipe: SwipeRefreshLayout
     private lateinit var Adapter: BarangAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,17 +30,33 @@ class MenuActivity : AppCompatActivity() {
 
         Menu = findViewById(R.id.rv_menu)
         Tambah = findViewById(R.id.btn_tambah)
+        Swipe = findViewById(R.id.swipe)
 
         Tambah.setOnClickListener {
             val intent = Intent(this, InsertActivity::class.java)
             startActivity(intent)
         }
 
+        Swipe.setOnRefreshListener {
+            READ()
+            if(Swipe.isRefreshing()){
+                Swipe.setRefreshing(false)
+            }
+        }
+
+        getRecyclerView()
+        READ()
+
+    }
+
+    private fun getRecyclerView() {
         Adapter = BarangAdapter(arrayListOf())
         Menu.setHasFixedSize(true)
         Menu.layoutManager = LinearLayoutManager(this@MenuActivity, LinearLayoutManager.VERTICAL ,false)
         Menu.adapter = Adapter
+    }
 
+    private fun READ() {
         val retro = ApiConfig().getRetroClientInstance().getBarang()
         retro.enqueue(object : Callback<BarangResponse> {
             override fun onResponse(call: Call<BarangResponse>, response: Response<BarangResponse>) {
@@ -70,7 +89,6 @@ class MenuActivity : AppCompatActivity() {
             }
 
         })
-
     }
 
 }
